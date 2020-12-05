@@ -323,7 +323,7 @@ class Job_Type(models.Model):
 
 
 wage_ranges = (
-    ('state minimum hourly wage', 'State Minimum Hourly Wage')
+    ('state minimum hourly wage', 'State Minimum Hourly Wage'),
     ('10-19k yearly','10-19K Yearly'),
     ('20k-39k yearly','20k-39K Yearly'),
     ('40k-64k yearly','40k-64K Yearly'),
