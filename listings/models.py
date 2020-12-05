@@ -1,6 +1,11 @@
 from django.db import models
+from datetime import datetime
 
 # Create your models here.
+class Minority_Types(models.Model):
+    minority_type = models.CharField(max_length=50)
+    def __str__(self):
+        return str(self.minority_type)
 
 class Education(models.Model):
     education_level_description = models.CharField(max_length=50)
@@ -16,10 +21,11 @@ class User(models.Model):
     city = models.CharField(max_length=50)
     state = models.CharField(max_length=2)
     zip_code = models.CharField(max_length=10)
-    birth_date = 10
+    birth_date = models.DateTimeField(default=datetime.now)
     # resume = models.FileField(upload_to='documents/%Y/%m/%d')
     photo = models.ImageField(upload_to='photos', blank=True)
     education_lvl = models.ForeignKey(Education, on_delete=models.CASCADE)
+    minority_status = models.ManyToManyField(Minority_Types)
 
     def __str__(self):
         return str(self.first_name) + ' ' + str(self.last_name)
@@ -289,12 +295,66 @@ skill_set = (
     ,('xaml','XAML')
     ,('xhtml','XHTML')
     ,('xml','XML')
-
 )
 
 class Skill(models.Model):
     skill_description = models.CharField(max_length=30, choices=skill_set, default='a/btesting')
 
 class User_Skills(models.Model):
-    pass
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    skill_id = models.ForeignKey(Skill, on_delete=models.CASCADE)
+    proficiency_lvl = models.IntegerField()
+    def __str__(self):
+        return str(self.user_id) + ' has ' + str(self.skill_id) + ' skill at ' + str(self.proficiency_lvl) + ' proficiency.'
 
+class Employer_Size(models.Model):
+    size_description = models.CharField(max_length=50)
+    def __str__(self):
+        return str(self.size_description)
+class Employer(models.Model):
+    size_id = models.ForeignKey(Employer_Size, on_delete=models.CASCADE)
+    employer_name = models.CharField(max_length=30)
+    employer_email= models.CharField(max_length=30)
+    employer_logo = models.ImageField(upload_to='photos', blank=True)
+
+
+class Job_Type(models.Model):
+    job_type_description = models.CharField(max_length=30)
+
+class Job_Listing(models.Model):
+    skill_description = models.CharField(max_length=30)
+    job_title = models.CharField(max_length=30)
+    job_description = models.CharField(max_length=255)
+    job_type_id = models.ForeignKey(Job_Type, on_delete=models.CASCADE)
+    job_street_address = models.CharField(max_length=50)
+    job_city = models.CharField(max_length=50)
+    job_state = models.CharField(max_length=2)
+    job_zip_code = models.CharField(max_length=10)
+    job_wage_range = 'a'
+    relocation_assistance = models.BooleanField()
+    transcript_required = models.BooleanField()
+    cover_letter_required = models.BooleanField()
+    gpa = models.BooleanField()
+    letter_of_reccomendation = models.BooleanField()
+    deadline_date = models.DateTimeField(default=datetime.now)
+    still_open = models.BooleanField()
+    def __str__(self):
+        return self.skill_description
+
+class Job_Skills(models.Model):
+    job_listing_id = models.ForeignKey(Job_Listing, on_delete=models.CASCADE)
+    skill_id = models.ForeignKey(Skill, on_delete=models.CASCADE)
+    proficiency_lvl = models.IntegerField()
+    def __str__(self):
+        return str(self.job_listing_id) + ' has ' + str(self.skill_id) + ' skill at ' + str(self.proficiency_lvl) + ' proficiency.'
+
+
+class External_Application_Rating(models.Model):
+    ease_of_application = models.IntegerField()
+    clarity_of_application = models.IntegerField()
+    more_than_resume = models.BooleanField()
+class Application(models.Model):
+    rating = models.OneToOneField(External_Application_Rating, on_delete=models.CASCADE, blank=True)
+    job_listing_id = models.ForeignKey(Job_Listing, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    application_date = models.DateTimeField(default=datetime.now)
