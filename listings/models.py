@@ -321,8 +321,19 @@ class Employer(models.Model):
 class Job_Type(models.Model):
     job_type_description = models.CharField(max_length=30)
 
+
+wage_ranges = (
+    ('state minimum hourly wage', 'State Minimum Hourly Wage')
+    ('10-19k yearly','10-19K Yearly'),
+    ('20k-39k yearly','20k-39K Yearly'),
+    ('40k-64k yearly','40k-64K Yearly'),
+    ('65k-70k yearly','65k-70K Yearly'),
+    ('70-99k yearly','70-99K Yearly'),
+    ('100k+','100K+'),
+    ('undisclosed','Undisclosed'),
+)
 class Job_Listing(models.Model):
-    skill_description = models.CharField(max_length=30)
+    listing_description = models.CharField(max_length=30)
     job_title = models.CharField(max_length=30)
     job_description = models.CharField(max_length=255)
     job_type_id = models.ForeignKey(Job_Type, on_delete=models.CASCADE)
@@ -330,7 +341,7 @@ class Job_Listing(models.Model):
     job_city = models.CharField(max_length=50)
     job_state = models.CharField(max_length=2)
     job_zip_code = models.CharField(max_length=10)
-    job_wage_range = 'a'
+    job_wage_range = models.CharField(max_length=50, choices=wage_ranges, default='state minimum hourly wage')
     relocation_assistance = models.BooleanField()
     transcript_required = models.BooleanField()
     cover_letter_required = models.BooleanField()
@@ -339,7 +350,7 @@ class Job_Listing(models.Model):
     deadline_date = models.DateTimeField(default=datetime.now)
     still_open = models.BooleanField()
     def __str__(self):
-        return self.skill_description
+        return self.listing_description
 
 class Job_Skills(models.Model):
     job_listing_id = models.ForeignKey(Job_Listing, on_delete=models.CASCADE)
