@@ -1,0 +1,136 @@
+.dropdown {
+    float: right;
+    margin-right: 115px;
+    overflow: hidden;
+  }
+  
+  .dropdown .dropbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: #ff0000;
+    font-family: inherit;
+    margin: 0;
+  }
+  
+  .dropbtn:hover {
+    cursor: pointer;
+  }
+  
+  .dropdown:hover {
+    background-color: #ff7b7b;
+    text-decoration: none;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ff0000 !important;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    opacity: 0;
+    -webkit-transition: opacity .3s ease-in;
+    -moz-transition: opacity .3s ease-in;
+    -o-transition: opacity .3s ease-in;
+    transition: opacity .3 ease-in;
+  }
+  
+  .dropdown-content a {
+    float: none;
+    color: black;
+    padding: 14px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #ff7b7b;
+    
+  }
+  
+  .show {
+    display: block;
+    z-index: 11;
+  }
+.bar-text{
+    text-align: left;
+    width: 90%;
+    margin: 0 auto;
+}
+  * {
+    box-sizing: border-box;
+  }
+  
+  /* Style the search field */
+  form.example input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 80%;
+    background: #f1f1f1;
+  }
+  
+  /* Style the submit button */
+  form.example button {
+    float: left;
+    width: 20%;
+    padding: 10px;
+    background: #2196F3;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none; /* Prevent double borders */
+    cursor: pointer;
+  }
+  
+  form.example button:hover {
+    background: #0b7dda;
+  }
+  
+  /* Clear floats */
+  form.example::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  .a_btn {
+    display: block;
+    background: #4E9CAF;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    line-height: 25px;
+    width: 25%;
+    float: center;
+    margin:0 auto;
+}
+
+.scroll-item{
+  padding-left: 50px;
+  display: block;
+}
+
+div.scrollbar {
+  background-color: #333;
+  overflow: auto;
+  white-space: nowrap;
+}
+
+div.scrollbar a {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+}
+
+div.scrollbar a:hover {
+  background-color: #777;
+}

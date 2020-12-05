@@ -1,0 +1,37 @@
+
+{% extends 'base.html' %}
+{% block content %}
+<header class="masthead">
+    {% csrf_token %}
+    <p>{{message}}</p>
+
+    {% if message == "Success"%}
+        <a style="width: 50%;" class='a_btn' href="http://127.0.0.1:8000">Sign In</a>
+    {%else%}
+    <form name="form" method="post" action="{% url 'enter' %}">
+        {% csrf_token %}
+        <label for='first'>First Name:</label>
+        <input type="text" name='first' id='first'>
+        <br><br>
+        <label for='last'>Last Name:</label>
+        <input type="text" name='last' id='last'> 
+        <br><br>
+        <label for='password'>Password:</label>
+        <input type="password" name='password' id='password'>
+        <br><br>
+        <label for='confirmpassword'>Confirm Password:</label>
+        <input type="password" name='confirmpassword' id='confirmpassword'>
+        <br><br>
+        <label for='email'>Email Address:</label>
+        <input type="email" name='email' id='email'> 
+        <br><br>     
+        <button type="submit">Sign Up</button>
+    </form>
+    {%endif%}
+</header>
+
+<!-- TODO add form for submitting email, password, confirm password, first name, last name -->
+
+
+
+{% endblock %}
