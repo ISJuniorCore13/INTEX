@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'homePage.apps.HomepageConfig',
     'listings.apps.ListingsConfig',
     'login.apps.LoginConfig',
 ]
@@ -81,7 +82,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME' : 'INTEX',
         'USER' : 'postgres',
-        'PASSWORD' : 'C00lbe@n$13',
+        'PASSWORD' : 'Super123',
         'HOST' : 'localhost'
     }
 }
