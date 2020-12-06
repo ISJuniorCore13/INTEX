@@ -3,7 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 def indexPageView(request):
 
-    featured_list = []
+    featured_list = ["Web Developer"]
     searched_list = []
 
     context = {
@@ -23,3 +23,10 @@ def searchPageView(request):
     }
 
     return render(request, 'listings/listings.html', context)
+
+def jobPostView(request, job_title, jobListing_id):
+    context = {
+        "job_title" : job_title,
+        "jobListing_id" : jobListing_id
+    }
+    return render(request, 'listings/post.html', context)

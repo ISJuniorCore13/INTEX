@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+        <header class="masthead bg-light">
+            <h1 style="color:#296F90;">Welcome To Black Cyber Recruiter</h1>
+            <br><br>
+            <h3 class="masthead-subheading" style="color:#38B6A9;">We help connect minorities with job opportunities</h3>
+            <a class="btn btn-primary btn-xl text-uppercase text-center" style="width: 50%; height: 200%;" href="http://127.0.0.1:8000/listings/">Search Jobs</a>
+        </header>
+        <br>
+        <div class="container">
+            <div class="row">
+              <div class="col-lg">
+                <h4 class="text-center" style="color:#296F90;">Our Mission</h4>
+                <p class="text-left">At Black Cyber Recruiter, we have simplified the job search and application application process to help connect minorities with opportunities.
+                    We have made sure employers make their listings crystal clear, with application deadlines shown in search results.
+                </p>
+              </div>
+              <div class="col-lg">
+                <h4 class="text-center" style="color:#296F90;">Featured Jobs</h4>
+                <div class="containter"> 
+                    <ul class=""  style="list-style-type: none;">
+                    {% for job in JobListings %} 
+                            <li>
+                                <article>
+                                    <!-- src='' until we have the database set up, then we can put the source as the file on the database -->
+                                    <a class=''
+                                    href="{% url 'post' job_title=job jobListing_id=1052 %}">
+                                        <img height="100" src='' alt="">
+                                        <span class="caption">{{ job }}</span>
+                                    </a> 
+                                </article>
+                            <li>
+                    {% endfor %}  
+                    </ul>
+                </div>
+              </div>
+{% endblock %}
