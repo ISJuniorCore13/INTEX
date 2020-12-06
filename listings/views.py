@@ -3,7 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 def indexPageView(request):
 
-    featured_list = ["Web Developer"]
+    featured_list = ["Web Developer", "Software Engineer"]
     searched_list = []
 
     context = {
