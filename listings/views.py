@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Job_Listing, Employer, Job_Type
+from .models import Job_Listing, Employer, Job_Type, External_Application_Rating
 # Create your views here.
 def indexPageView(request):
 
@@ -89,3 +89,26 @@ def jobPostView(request, job_title, jobListing_id):
         "jobListing_id" : jobListing_id
     }
     return render(request, 'listings/post.html', context)
+
+def externalAppSurveyView(request):
+    return render(request, 'listings/externalAppSurvey.html')
+
+def surveySubmitView(request):
+    ease = request.POST.get('ease')
+    clarity = request.POST.get('clarity')
+    extra = request.POST.get('extra')
+
+    if extra == 0 :
+        extra = True
+    else :
+        extra = False
+
+    External_Application_Rating.objects.create(ease_of_application=ease, 
+        clarity_of_application=clarity, more_than_resume=extra)
+
+    context = {
+        "message" : "Survey Submitted Successfully"
+    }
+    
+
+    return render(request, 'listings/externalAppSurvey.html', context)
