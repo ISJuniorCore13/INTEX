@@ -19,20 +19,40 @@
                         <article>
                             <h5 class='' style="color: #F5B95A;"><a href="{% url 'post' job_title=f.job_title jobListing_id=f.id %}">{{ f.job_title }}</a></h5> 
                             <div class="conatiner">
-                                <div class="row">
-                                    <div class="col-3">
-                                        <p>Employer: {{f.employer_id}}</p>
+                                {% if user.groups.all.0.name == 'applicant' %} 
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <p>Employer: {{f.employer_id}}</p>
+                                        </div>
+                                        <div class="col-3">
+                                            <p>Location: {{f.job_city}}, {{f.job_state}}</p>
+                                        </div>
+                                        <div class="col-3">
+                                            <p>Wage: {{f.job_wage_range}}</p>
+                                        </div>
+                                        <div class="col-3">
+                                            <p>Deadline: {{f.deadline_date}}</p>
+                                        </div>
                                     </div>
-                                    <div class="col-3">
-                                        <p>Location: {{f.job_city}}, {{f.job_state}}</p>
+                                {% elif user.groups.all.0.name == 'employer' %} 
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <p>Employer: {{f.employer_id}}</p>
+                                        </div>
+                                        <div class="col-4">
+                                            <p>Location: {{f.job_city}}, {{f.job_state}}</p>
+                                        </div>
+                                        <div class="col-4">
+                                            <p>Wage: {{f.job_wage_range}}</p>
+                                        </div>
+                                        <div class="col-4">
+                                            <p>Deadline: {{f.deadline_date}}</p>
+                                        </div>
+                                        <div class="col-4">
+                                            <a href='http://127.0.0.1:8000/addjob/{{f.id}}'>Edit</a>
+                                        </div>
                                     </div>
-                                    <div class="col-3">
-                                        <p>Wage: {{f.job_wage_range}}</p>
-                                    </div>
-                                    <div class="col-3">
-                                        <p>Deadline: {{f.deadline_date}}</p>
-                                    </div>
-                                </div>
+                                {% endif %}
                             </div>
                         </article>
                     <li>

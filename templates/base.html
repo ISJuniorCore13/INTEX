@@ -33,7 +33,11 @@
                 <ul class="navbar-nav text-uppercase ml-auto">
                     <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:8000/">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:8000/listings/">Search</a></li>
-                    <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:8000/">Log Out</a></li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:8000/accounts/logout/">Log Out</a></li>
+                    {% else %}
+                    <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:8000/accounts/login">Log In</a></li>
+                    {% endif %}
                 </ul>
             </div>
         </div>

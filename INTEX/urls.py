@@ -15,10 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from listings.views import indexPageView
+from django.views.generic import TemplateView
+from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
     path('listings/', include('listings.urls')),
     path('login/', include('login.urls')),
     path('', include('homePage.urls')),
     path('admin/', admin.site.urls),
+    path('^accounts/profile/$', indexPageView, name='user_profile'),
+    path('accounts/', include('django.contrib.auth.urls')),
+
 ]

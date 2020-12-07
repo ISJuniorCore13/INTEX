@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
+
+    {% if user.is_authenticated %}
     <div class="container">
         <h3 style="color: #296F90;"> {{ job_object.job_title }} </h3>
         <div class="row">
@@ -22,4 +24,10 @@
             </div> 
         </div>
     </div>
+    {% else %}
+        <div class="container">
+            <h3 style="color: #296F90;"> Please log in to view this information. </h3>
+            <a class="nav-link" href="http://127.0.0.1:8000/accounts/login/">Log In</a>
+        </div>
+    {% endif%}
 {% endblock%}

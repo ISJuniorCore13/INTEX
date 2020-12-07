@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import datetime
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Minority_Type(models.Model):
@@ -12,7 +13,7 @@ class Education(models.Model):
     def __str__(self):
         return str(self.education_level_description)
 
-class User(models.Model):
+class Applicant(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     email_address = models.CharField(max_length=50)
@@ -26,7 +27,7 @@ class User(models.Model):
     photo = models.ImageField(upload_to='photos', blank=True)
     education_lvl = models.ForeignKey(Education, on_delete=models.CASCADE, blank=True)
     minority_status = models.ManyToManyField(Minority_Type, blank=True)
-
+    user_id = models.OneToOneField(User,models.CASCADE)
     def __str__(self):
         return str(self.first_name) + ' ' + str(self.last_name)
         
@@ -303,12 +304,12 @@ class Skill(models.Model):
     def __str__(self):
         return self.skill_description
 
-class User_Skill(models.Model):
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+class Applicant_Skill(models.Model):
+    Applicant_id = models.ForeignKey(Applicant, on_delete=models.CASCADE)
     skill_id = models.ForeignKey(Skill, on_delete=models.CASCADE)
     proficiency_lvl = models.IntegerField()
     def __str__(self):
-        return str(self.user_id) + ' has ' + str(self.skill_id) + ' skill at ' + str(self.proficiency_lvl) + ' proficiency.'
+        return str(self.Applicant_id) + ' has ' + str(self.skill_id) + ' skill at ' + str(self.proficiency_lvl) + ' proficiency.'
 
 class Employer_Size(models.Model):
     size_description = models.CharField(max_length=50)
@@ -319,6 +320,7 @@ class Employer(models.Model):
     employer_name = models.CharField(max_length=30)
     employer_email= models.CharField(max_length=30)
     employer_logo = models.ImageField(upload_to='photos', blank=True)
+    user_id = models.OneToOneField(User,models.CASCADE)
     def __str__(self):
         return self.employer_name
 
@@ -329,6 +331,7 @@ class Job_Type(models.Model):
 
 wage_ranges = (
     ('state minimum hourly wage', 'State Minimum Hourly Wage'),
+    ('<10k','Less than 10K Yearly'),
     ('10-19k yearly','10-19K Yearly'),
     ('20k-39k yearly','20k-39K Yearly'),
     ('40k-64k yearly','40k-64K Yearly'),
@@ -338,9 +341,9 @@ wage_ranges = (
     ('undisclosed','Undisclosed'),
 )
 class Job_Listing(models.Model):
-    listing_description = models.CharField(max_length=30)
+    listing_description = models.CharField(max_length=255)
     job_title = models.CharField(max_length=30)
-    job_description = models.CharField(max_length=255)
+    job_description = models.CharField(max_length=5000)
     job_type_id = models.ForeignKey(Job_Type, on_delete=models.CASCADE, related_name='children')
     employer_id = models.ForeignKey(Employer, on_delete=models.CASCADE, related_name='employer')
     job_street_address = models.CharField(max_length=50)
@@ -376,7 +379,7 @@ class External_Application_Rating(models.Model):
 class Application(models.Model):
     rating = models.OneToOneField(External_Application_Rating, on_delete=models.CASCADE, blank=True)
     job_listing_id = models.ForeignKey(Job_Listing, on_delete=models.CASCADE)
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    Applicant_id = models.ForeignKey(Applicant, on_delete=models.CASCADE)
     application_date = models.DateTimeField(default=datetime.now)
     def __str__(self):
         return str(self.application_date) + self.job_listing_id
