@@ -1,14 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
-<header class="masthead">
+<header class="container">
 
     {% csrf_token %}
 {% comment %} 
 deadline_date
-still_open
  {% endcomment %}
     <form name="joblisting" method="post" action="">
-        <table style="width:100%;">
+        <table style="width:100%;text-align:left;">
             <tr>
                 <td>
                     <label for='listing_description' style="color: gray;">Job Title Description (Use 4-8 Key Words) : </label>
