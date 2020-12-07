@@ -135,10 +135,10 @@ deadline_date
             <tr>
                 <td>
                     <label for='relocation_assistance' style="color: gray;">Will you offer Relocation Assistance?: </label>
-                    <input type="checkbox" name='relocation_assistance' id='relocation_assistance' required>
+                    <input type="checkbox" name='relocation_assistance' id='relocation_assistance'>
                     <br><br>
                     <label for='extra_documents' style="color: gray;">Will you require applicants to submit supplementary documents other than a resume? : </label>
-                    <input type="checkbox" name='relocation_assistance' id='relocation_assistance' required>
+                    <input type="checkbox" name='relocation_assistance' id='relocation_assistance'>
                     <br><br>
                     <label for='deadline_date' style="color: gray;">What is the deadline date for applications? Must be 6 weeks from opening : </label>
                     <input type="date" name='deadline_date' id='deadline_date' required>
@@ -155,3 +155,19 @@ deadline_date
 </header>
 
 {% endblock %}
+
+<script>
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0 so need to add 1 to make it 1
+    var yyyy = today.getFullYear();
+    if(dd<10){
+    dd='0'+dd
+    } 
+    if(mm<10){
+    mm='0'+mm
+    } 
+
+    today = yyyy+'-'+mm+'-'+dd;
+    document.getElementById("deadline_date").setAttribute("min", today);
+</script>
