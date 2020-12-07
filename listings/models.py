@@ -341,9 +341,9 @@ wage_ranges = (
     ('undisclosed','Undisclosed'),
 )
 class Job_Listing(models.Model):
-    listing_description = models.CharField(max_length=30)
+    listing_description = models.CharField(max_length=255)
     job_title = models.CharField(max_length=30)
-    job_description = models.CharField(max_length=255)
+    job_description = models.CharField(max_length=5000)
     job_type_id = models.ForeignKey(Job_Type, on_delete=models.CASCADE, related_name='children')
     employer_id = models.ForeignKey(Employer, on_delete=models.CASCADE, related_name='employer')
     job_street_address = models.CharField(max_length=50)
