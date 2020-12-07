@@ -8,27 +8,60 @@
         <a class="btn btn-primary btn-sm" id='search-button' onclick="" ><i class="fa fa-search"></i></a>
     </form>
     <br><br>
+
+    {% if message == 'feat' %}
     <div class="containter bg-light"> 
         <br>
         <h4 class="text-left" style="color:#296F90; padding-left: 30px;">Featured Listings</h4>
-            <ul class="text-left"  style="list-style-type: none;">
+        <ul class="text-left"  style="list-style-type: none;">
             {% for f in featured %} 
                     <li>
                         <article>
-                            <h5 class='' style="color: #F5B95A;"><a href="{% url 'post' job_title=f jobListing_id=1052 %}">{{ f }}</a></h5> 
+                            <h5 class='' style="color: #F5B95A;"><a href="{% url 'post' job_title=f.job_title jobListing_id=f.id %}">{{ f.job_title }}</a></h5> 
                             <div class="conatiner">
                                 <div class="row">
                                     <div class="col-3">
-                                        <p>Employer</p>
+                                        <p>Employer: {{f.employer_id}}</p>
                                     </div>
                                     <div class="col-3">
-                                        <p>Location</p>
+                                        <p>Location: {{f.job_city}}, {{f.job_state}}</p>
                                     </div>
                                     <div class="col-3">
-                                        <p>Pay Range</p>
+                                        <p>Wage: {{f.job_wage_range}}</p>
                                     </div>
                                     <div class="col-3">
-                                        <p>Application Deadline:</p>
+                                        <p>Deadline: {{f.deadline_date}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    <li>
+                    <br>
+            {% endfor %}  
+            </ul
+    </div>
+    {% else %}
+    <div class="containter bg-light"> 
+        <br>
+        <h4 class="text-left" style="color:#296F90; padding-left: 30px;">Searched Listings</h4>
+            <ul class="text-left"  style="list-style-type: none;">
+            {% for s in searched %} 
+                    <li>
+                        <article>
+                            <h5 class='' style="color: #F5B95A;"><a href="{% url 'post' job_title=s.job_title jobListing_id=s.id %}">{{ s.job_title }}</a></h5> 
+                            <div class="conatiner">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <p>Employer: {{s.employer_id}}</p>
+                                    </div>
+                                    <div class="col-3">
+                                        <p>Location: {{s.job_city}}, {{s.job_state}}</p>
+                                    </div>
+                                    <div class="col-3">
+                                        <p>Wage: {{s.job_wage_range}}</p>
+                                    </div>
+                                    <div class="col-3">
+                                        <p>Deadline: {{s.deadline_date}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -38,13 +71,7 @@
             {% endfor %}  
             </ul>
     </div>
-
-    </div>
-    <div class="container">
-        {% for s in searched %}
-            <a href='http://127.0.0.1:8000/listings/post'></a>
-        {% endfor %}  
-    </div>
+    {% endif %}
 </header>
 
 
