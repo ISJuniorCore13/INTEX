@@ -17,7 +17,8 @@ def enterPageView(request):
     cpwd = request.POST.get('confirmpassword')
     email = request.POST.get('email')
 
-    if f_name is '' or l_name is '' or pwd is '' or cpwd is '' or email is '':
+
+    if f_name == '' or l_name == '' or pwd == '' or cpwd == '' or email == '':
         msg = "Please make sure the information is correct."
 
 
