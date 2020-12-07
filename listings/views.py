@@ -1,28 +1,12 @@
 from django.shortcuts import render
-from .models import Job_Listing
+from .models import Job_Listing, Employer, Job_Type
 # Create your views here.
 def indexPageView(request):
 
     featured_list = []
-    top_few = []
     searched_list = []
 
-    few = 5
-
     featured_list = Job_Listing.objects.all().order_by('deadline_date')
-
-
-
-    # if len(featured_list) < 5:
-    #     few = len(featured_list)
-
-    # for i in range(few):
-    #     if len(searched_list) == 0:
-    #         top_few = featured_list[i]
-    #     else:
-    #         top_few = top_few + featured_list[i]
-
-    # featured_list = top_few 
 
     context = {
         "message" : "feat",
@@ -47,11 +31,17 @@ def searchPageView(request):
         ss = ss.split()
         print(ss)
         for i in range(len(ss)):
+
+            employers = Employer.objects.filter(employer_name__contains=ss[i])
+            job_types = Job_Type.objects.filter(job_type_description__contains=ss[i])
+
             if len(searched_list) == 0:
+
                 searched_list = Job_Listing.objects.filter(
                         Q(listing_description__contains=ss[i]) |  
                         Q(job_title__contains=ss[i]) |
-                        # Q(employer__employer_name__contains=ss[i]) |
+                        Q(employer_id__in=employers) |
+                        Q(job_type_id__in=job_types) |
                         Q(job_state__contains=ss[i]) |
                         Q(job_city__contains=ss[i]) |
                         Q(job_description__contains=ss[i]) 
@@ -60,7 +50,8 @@ def searchPageView(request):
                 next_word_search = Job_Listing.objects.filter(
                         Q(listing_description__contains=ss[i]) |  
                         Q(job_title__contains=ss[i]) |
-                        # Q(employer__employer_name__contains=ss[i]) |
+                        Q(employer_id__in=employers) |
+                        Q(job_type_id__in=job_types) |
                         Q(job_state__contains=ss[i]) |
                         Q(job_city__contains=ss[i]) |
                         Q(job_description__contains=ss[i]) 
