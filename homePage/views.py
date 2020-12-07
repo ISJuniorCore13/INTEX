@@ -7,3 +7,6 @@ def indexPageView(request):
         "JobListings" : aJobListing
     }
     return render(request, 'homePage/index.html', context)
+
+def addListingPageView(request):
+    return render(request, 'homePage/addlisting.html')
