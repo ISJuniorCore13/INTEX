@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div style="float: center;" >
+    <div style="float: center;" >
+        <form style="float: center;"  method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            
+            <table  style="margin-left: auto; margin-right: auto;" >
+            <div style="float: center;" >
+                <tr>
+                    <td>{{ form.username.label_tag }}</td>
+                    <td>{{ form.username }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.password.label_tag }}</td>
+                    <td>{{ form.password }}</td>
+                </tr>
+            </div>
+            </table>
+            
+            <input style="width: 25%;" type="submit" class='a_btn' value="Log In" />
+            <br>
+            <input type="hidden" name="next" value="{{ next }}" />
+            <a style="width: 25%;" class='a_btn' href="http://127.0.0.1:8000/signup">Sign Up</a>
+
+        </form>
+    </div>
+</div> 
+{% endblock %}
+    
+
+
+
