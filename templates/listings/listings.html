@@ -22,7 +22,7 @@
                                 {% if user.groups.all.0.name == 'applicant' %} 
                                     <div class="row">
                                         <div class="col-3">
-                                            <p>Employer: {{f.employer_id}}</p>
+                                            <p>Employer: {{f.employer}}</p>
                                         </div>
                                         <div class="col-3">
                                             <p>Location: {{f.job_city}}, {{f.job_state}}</p>
@@ -37,7 +37,7 @@
                                 {% elif user.groups.all.0.name == 'employer' %} 
                                     <div class="row">
                                         <div class="col-4">
-                                            <p>Employer: {{f.employer_id}}</p>
+                                            <p>Employer: {{f.employer}}</p>
                                         </div>
                                         <div class="col-4">
                                             <p>Location: {{f.job_city}}, {{f.job_state}}</p>
@@ -50,6 +50,25 @@
                                         </div>
                                         <div class="col-4">
                                             <a href='http://127.0.0.1:8000/addjob/{{f.id}}'>Edit</a>
+                                        </div>
+                                        <div class="col-4">
+                                            <form name="joblisting" method="post" action="{% url 'removeListing' %}" >
+                                                {% csrf_token %}
+                                                <input hidden name='remove_id' id='remove_id' value = {{f.id}}>
+                                                <button type = "submit">Delete</button>
+                                            <form>
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <p>Employer: {{f.employer}}</p>
+                                        </div>
+                                        <div class="col-2">
+                                            <p>Location: {{f.job_city}}, {{f.job_state}}</p>
+                                        </div>
+                                        <div class="col-2">
+                                            <p>Deadline: {{f.deadline_date}}</p>
                                         </div>
                                     </div>
                                 {% endif %}
@@ -70,20 +89,59 @@
                         <article>
                             <h5 class='' style="color: #F5B95A;"><a href="{% url 'post' job_title=s.job_title jobListing_id=s.id %}">{{ s.job_title }}</a></h5> 
                             <div class="conatiner">
-                                <div class="row">
-                                    <div class="col-3">
-                                        <p>Employer: {{s.employer_id}}</p>
+                                {% if user.groups.all.0.name == 'applicant' %} 
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <p>Employer: {{s.employer}}</p>
+                                        </div>
+                                        <div class="col-3">
+                                            <p>Location: {{s.job_city}}, {{s.job_state}}</p>
+                                        </div>
+                                        <div class="col-3">
+                                            <p>Wage: {{s.job_wage_range}}</p>
+                                        </div>
+                                        <div class="col-3">
+                                            <p>Deadline: {{s.deadline_date}}</p>
+                                        </div>
                                     </div>
-                                    <div class="col-3">
-                                        <p>Location: {{s.job_city}}, {{s.job_state}}</p>
+                                {% elif user.groups.all.0.name == 'employer' %} 
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <p>Employer: {{s.employer}}</p>
+                                        </div>
+                                        <div class="col-4">
+                                            <p>Location: {{s.job_city}}, {{s.job_state}}</p>
+                                        </div>
+                                        <div class="col-4">
+                                            <p>Wage: {{s.job_wage_range}}</p>
+                                        </div>
+                                        <div class="col-4">
+                                            <p>Deadline: {{s.deadline_date}}</p>
+                                        </div>
+                                        <div class="col-4">
+                                            <a href='http://127.0.0.1:8000/addjob/{{s.id}}'>Edit</a>
+                                        </div>
+                                        <div class="col-4">
+                                            <form name="joblisting" method="post" action="{% url 'removeListing' %}" >
+                                                {% csrf_token %}
+                                                <input hidden name='remove_id' id='remove_id' value = {{s.id}}>
+                                                <button type = "submit">Delete</button>
+                                            <form>
+                                        </div>
                                     </div>
-                                    <div class="col-3">
-                                        <p>Wage: {{s.job_wage_range}}</p>
+                                {% else %}
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <p>Employer: {{s.employer}}</p>
+                                        </div>
+                                        <div class="col-2">
+                                            <p>Location: {{s.job_city}}, {{s.job_state}}</p>
+                                        </div>
+                                        <div class="col-2">
+                                            <p>Deadline: {{s.deadline_date}}</p>
+                                        </div>
                                     </div>
-                                    <div class="col-3">
-                                        <p>Deadline: {{s.deadline_date}}</p>
-                                    </div>
-                                </div>
+                                {% endif %}
                             </div>
                         </article>
                     <li>
