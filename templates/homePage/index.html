@@ -19,13 +19,13 @@
                 <h4 class="text-center" style="color:#296F90;">Featured Jobs</h4>
                 <div class="containter"> 
                     <ul class=""  style="list-style-type: none;">
-                    {% for job in JobListings %} 
+                    {% for job in featured %} 
                             <li>
                                 <article>
                                     <!-- src='' until we have the database set up, then we can put the source as the file on the database -->
-                                    <a class='' href="">
+                                    <a class='' href="{% url 'post' job_title=job.job_title jobListing_id=job.id %}">
                                         <img height="100" src='' alt="">
-                                        <span class="caption">{{ job }}</span>
+                                        <span class="caption">{{ job.job_title }}</span>
                                     </a> 
                                 </article>
                             <li>
