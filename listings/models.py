@@ -335,7 +335,7 @@ wage_ranges = (
     ('10-19k yearly','10-19K Yearly'),
     ('20k-39k yearly','20k-39K Yearly'),
     ('40k-64k yearly','40k-64K Yearly'),
-    ('65k-70k yearly','65k-70K Yearly'),
+    ('65k-70k yearly','65k-69K Yearly'),
     ('70-99k yearly','70-99K Yearly'),
     ('100k+','100K+'),
     ('undisclosed','Undisclosed'),

@@ -6,155 +6,379 @@
 {% comment %} 
 deadline_date
  {% endcomment %}
-    <form name="joblisting" method="post" action="">
-        <table style="width:100%;text-align:left;">
-            <tr>
-                <td>
-                    <label for='listing_description' style="color: gray;">Job Title Description (Use 4-8 Key Words) : </label>
-                    <input type="text" name='listing_description' id='listing_description' required>
-                    <br><br>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for='job_title' style="color: gray;">Job Title: </label>
-                    <input type="text" name='job_title' id='job_title' required> 
-                    <br><br>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for='job_description' style="color: gray;">Job Description: </label>
-                    <input type="text" name='job_description' id='job_description' required> 
-                    <br><br>
-                </td>
-            </tr>
-            <tr>
-                <td> 
-                    <label for='job_type' style="color: gray;">Job Type: </label> 
-                    <select id="job_type" name="job_type" required>
-                        <option disabled selected value> -- Select -- </option>
-                        <option value="intern">Internship</option>
-                        <option value="full">Full-Time</option>
-                        <option value="part">Part-Time</option>
-                    </select>
-                    <br><br>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for='job_city' style="color: gray;">City:</label>
-                    <input type="text" name='job_city' id='job_city' required>
-                    <br><br> 
-                    <label for='job_state' style="color: gray;">State: </label>
-                    <select id='job_state' name='job_state' required>
-                        <option disabled selected value> -- Select -- </option>
-                        <option value="AL">Alabama</option>
-                        <option value="AK">Alaska</option>
-                        <option value="AZ">Arizona</option>
-                        <option value="AR">Arkansas</option>
-                        <option value="CA">California</option>
-                        <option value="CO">Colorado</option>
-                        <option value="CT">Connecticut</option>
-                        <option value="DE">Delaware</option>
-                        <option value="DC">District Of Columbia</option>
-                        <option value="FL">Florida</option>
-                        <option value="GA">Georgia</option>
-                        <option value="HI">Hawaii</option>
-                        <option value="ID">Idaho</option>
-                        <option value="IL">Illinois</option>
-                        <option value="IN">Indiana</option>
-                        <option value="IA">Iowa</option>
-                        <option value="KS">Kansas</option>
-                        <option value="KY">Kentucky</option>
-                        <option value="LA">Louisiana</option>
-                        <option value="ME">Maine</option>
-                        <option value="MD">Maryland</option>
-                        <option value="MA">Massachusetts</option>
-                        <option value="MI">Michigan</option>
-                        <option value="MN">Minnesota</option>
-                        <option value="MS">Mississippi</option>
-                        <option value="MO">Missouri</option>
-                        <option value="MT">Montana</option>
-                        <option value="NE">Nebraska</option>
-                        <option value="NV">Nevada</option>
-                        <option value="NH">New Hampshire</option>
-                        <option value="NJ">New Jersey</option>
-                        <option value="NM">New Mexico</option>
-                        <option value="NY">New York</option>
-                        <option value="NC">North Carolina</option>
-                        <option value="ND">North Dakota</option>
-                        <option value="OH">Ohio</option>
-                        <option value="OK">Oklahoma</option>
-                        <option value="OR">Oregon</option>
-                        <option value="PA">Pennsylvania</option>
-                        <option value="RI">Rhode Island</option>
-                        <option value="SC">South Carolina</option>
-                        <option value="SD">South Dakota</option>
-                        <option value="TN">Tennessee</option>
-                        <option value="TX">Texas</option>
-                        <option value="UT">Utah</option>
-                        <option value="VT">Vermont</option>
-                        <option value="VA">Virginia</option>
-                        <option value="WA">Washington</option>
-                        <option value="WV">West Virginia</option>
-                        <option value="WI">Wisconsin</option>
-                        <option value="WY">Wyoming</option>
-                    </select>
-                    <br><br>
-                    <label for='job_zip' style="color: gray;">Zip Code: </label>
-                    <input type="text" name='job_zip' id='job_zip' required>
-                    <br><br> 
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for='link_to_application' style="color: gray;">Link to External Application (if blank, BCR will send you applicants resume) : </label>
-                    <input type="url" name='link_to_application' id='link_to_application'> 
-                    <br><br>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for='wage_range' style="color: gray;">Wage Range: </label> 
-                    <select id="wage_range" name="wage_range" required>
-                        <option disabled selected value> -- Select -- </option>
-                        <option value="min">State Minimum Hourly Wage</option>
-                        <option value="less10">Less than 10K Yearly</option>
-                        <option value="10to19">10-19K Yearly</option>
-                        <option value="20to39">20k-39K Yearly</option>
-                        <option value="40to64">40k-64K Yearly</option>
-                        <option value="65to70">65k-70K Yearly</option>
-                        <option value="70to99">70-99K Yearly</option>
-                        <option value="100plus">100K+</option>
-                        <option value="undisclosed">Undisclosed</option>
-                    </select>
-                    <br><br>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for='relocation_assistance' style="color: gray;">Will you offer Relocation Assistance?: </label>
-                    <input type="checkbox" name='relocation_assistance' id='relocation_assistance'>
-                    <br><br>
-                    <label for='extra_documents' style="color: gray;">Will you require applicants to submit supplementary documents other than a resume? : </label>
-                    <input type="checkbox" name='extra_documents' id='extra_documents'>
-                    <br><br>
-                    <label for='deadline_date' style="color: gray;">What is the deadline date for applications? Must be 6 weeks from opening : </label>
-                    <input type="date" name='deadline_date' id='deadline_date' required>
-                    <br><br>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <button type="submit">Submit Job Listing</button>
-                </td>
-            </tr>
-        </table>
-    </form>
+
+<p>{{message}}</p>
+{% if user.is_authenticated and user.groups.all.0.name == 'employer' %}
+    {% if job != None %}
+         <form name="joblisting" method="post" action="{% url 'submit' %}">
+         {% csrf_token %}
+            <table style="width:100%;text-align:left;">
+                <tr>
+                    <td>
+                        <label for='listing_description' style="color: gray;">Job Title Description (Use 4-8 Key Words) : </label>
+                        <input type="text" name='listing_description' id='listing_description' value="{{job.listing_description}}" required>
+                        <br><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for='job_title' style="color: gray;">Job Title: </label>
+                        <input type="text" name='job_title' id='job_title' value ={{job.job_title}} required> 
+                        <br><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for='job_description' style="color: gray;">Job Description: </label>
+                        <input type="text" name='job_description' id='job_description' value ={{job.job_description}} required> 
+                        <br><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td> 
+                        <label for='job_type' style="color: gray;">Job Type: </label> 
+                        <select id="job_type" name="job_type"  required>
+                            <option disabled selected value> -- Select -- </option>
+                            
+                            {% if job.job_type.job_type_description == 'Internship'%}
+                                <option value="Internship" selected >Internship</option>
+                            {% else %}
+                                <option value="Internship">Internship</option>
+                            {% endif %}
+
+                            {% if job.job_type.job_type_description == 'Full-Time'%}
+                                <option value="Full-Time" selected>Full-Time</option>
+                            {% else %}
+                                <option value="Full-Time">Full-Time</option>
+                            {% endif %}
+
+                            {% if job.job_type.job_type_description == 'Part-Time'%}
+                                <option value="Part-Time" selected>Part-Time</option>
+                            {% else %}
+                                <option value="Part-Time">Part-Time</option>
+                            {% endif %}
+                        </select>
+                        <br><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for='job_city' style="color: gray;">City:</label>
+                        <input type="text" name='job_city' id='job_city' value ={{job.job_city}} required>
+                        <br><br> 
+                        <label for='job_state' style="color: gray;">State: </label>
+                        <select id='job_state' name='job_state' value ={{job.job_state}} required>
+                            <option disabled selected value> -- Select -- </option>
+                            <option value="AL">Alabama</option>
+                            <option value="AK">Alaska</option>
+                            <option value="AZ">Arizona</option>
+                            <option value="AR">Arkansas</option>
+                            <option value="CA">California</option>
+                            <option value="CO">Colorado</option>
+                            <option value="CT">Connecticut</option>
+                            <option value="DE">Delaware</option>
+                            <option value="DC">District Of Columbia</option>
+                            <option value="FL">Florida</option>
+                            <option value="GA">Georgia</option>
+                            <option value="HI">Hawaii</option>
+                            <option value="ID">Idaho</option>
+                            <option value="IL">Illinois</option>
+                            <option value="IN">Indiana</option>
+                            <option value="IA">Iowa</option>
+                            <option value="KS">Kansas</option>
+                            <option value="KY">Kentucky</option>
+                            <option value="LA">Louisiana</option>
+                            <option value="ME">Maine</option>
+                            <option value="MD">Maryland</option>
+                            <option value="MA">Massachusetts</option>
+                            <option value="MI">Michigan</option>
+                            <option value="MN">Minnesota</option>
+                            <option value="MS">Mississippi</option>
+                            <option value="MO">Missouri</option>
+                            <option value="MT">Montana</option>
+                            <option value="NE">Nebraska</option>
+                            <option value="NV">Nevada</option>
+                            <option value="NH">New Hampshire</option>
+                            <option value="NJ">New Jersey</option>
+                            <option value="NM">New Mexico</option>
+                            <option value="NY">New York</option>
+                            <option value="NC">North Carolina</option>
+                            <option value="ND">North Dakota</option>
+                            <option value="OH">Ohio</option>
+                            <option value="OK">Oklahoma</option>
+                            <option value="OR">Oregon</option>
+                            <option value="PA">Pennsylvania</option>
+                            <option value="RI">Rhode Island</option>
+                            <option value="SC">South Carolina</option>
+                            <option value="SD">South Dakota</option>
+                            <option value="TN">Tennessee</option>
+                            <option value="TX">Texas</option>
+                            <option value="UT">Utah</option>
+                            <option value="VT">Vermont</option>
+                            <option value="VA">Virginia</option>
+                            <option value="WA">Washington</option>
+                            <option value="WV">West Virginia</option>
+                            <option value="WI">Wisconsin</option>
+                            <option value="WY">Wyoming</option>
+                        </select>
+                        <br><br>
+                        <label for='job_zip' style="color: gray;">Zip Code: </label>
+                        <input type="text" name='job_zip' id='job_zip' value ={{job.job_zip_code}} required>
+                        <br><br> 
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for='link_to_application' style="color: gray;">Link to External Application (if blank, BCR will send you applicants resume) : </label>
+                        <input type="url" name='link_to_application' id='link_to_application' value ={{job.job_link_to_application}}> 
+                        <br><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for='wage_range' style="color: gray;">Wage Range: </label> 
+                        <select id="wage_range" name="wage_range" value ={{job.job_wage_range}} required>
+                            <option disabled selected value> -- Select -- </option>
+
+                            {% if job.job_wage_range == 'State Minimum Hourly Wage'%}
+                                <option value="state minimum hourly wage" selected >state minimum hourly wage</option>
+                            {% else %}
+                                <option value="state minimum hourly wage">State Minimum Hourly Wage</option>
+                            {% endif %}
+
+                            {% if job.job_wage_range == 'less than 10k yearly'%}
+                                <option value="less than 10k yearly" selected >Less than 10K Yearly</option>
+                            {% else %}
+                                <option value="less than 10k yearly">Less than 10K Yearly</option>
+                            {% endif %}
+
+                            {% if job.job_wage_range == '10-19k yearly'%}
+                                <option value="10-19k yearly" selected >10-19K Yearly</option>
+                            {% else %}
+                                <option value="10-19k yearly">10-19K Yearly</option>
+                            {% endif %}
+
+                            {% if job.job_wage_range == '20-39k yearly'%}
+                                <option value="20k-39k yearly" selected >20k-39K Yearly</option>
+                            {% else %}
+                                <option value="20k-39k yearly">20k-39K Yearly</option>
+                            {% endif %}
+
+                            {% if job.job_wage_range == '40-64k yearly'%}
+                                <option value="40to64" selected >40-64K Yearly</option>
+                            {% else %}
+                                <option value="40to64">40-64K Yearly</option>
+                            {% endif %}
+
+                            {% if job.job_wage_range == '65-69k yearly'%}
+                                <option value="65-69k yearly" selected >65-69K Yearly</option>
+                            {% else %}
+                                <option value="65-69k yearly">65k-69K Yearly</option>
+                            {% endif %}
+
+                            {% if job.job_wage_range == '70-99k yearly'%}
+                                <option value="70-99k yearly" selected >70-99K Yearly</option>
+                            {% else %}
+                                <option value="70-99k yearly">70-99K Yearly</option>
+                            {% endif %}
+
+                            {% if job.job_wage_range == '100k+'%}
+                                <option value="100k+" selected >100K+</option>
+                            {% else %}
+                                <option value="100k+">100K+</option>
+                            {% endif %}
+
+                            {% if job.job_wage_range == 'undisclosed'%}
+                                <option value="undisclosed" selected >Undisclosed</option>
+                            {% else %}
+                                <option value="undisclosed">Undisclosed</option>
+                            {% endif %}
+
+
+                        </select>
+                        <br><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for='relocation_assistance' style="color: gray;">Will you offer Relocation Assistance?: </label>
+                        <input type="checkbox" name='relocation_assistance' id='relocation_assistance' value ={{job.relocation_assistance}} >
+                        <br><br>
+                        <label for='extra_documents' style="color: gray;">Will you require applicants to submit supplementary documents other than a resume? : </label>
+                        {% if job.requires_additional_documents %}
+                            <input type="checkbox" name='extra_documents' id='extra_documents' value =1 >
+                        {% else %}
+                            <input type="checkbox" name='extra_documents' id='extra_documents' value =1 >
+                        {% endif %}
+                        <br><br>
+                        <label for='deadline_date' style="color: gray;">What is the deadline date for applications? Must be 6 weeks from opening : </label>
+                        <input type="date" name='deadline_date' id='deadline_date' required value ={{job.deadline_date}} >
+                        <br><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="submit">Submit Job Listing</button>
+                    </td>
+                </tr>
+            </table>
+
+            <input hidden type="text" name='user_id' id='user_id' value ={{user.id}} required>
+        </form>
+    {% else %}
+        <form name="joblisting" method="post" action="{% url 'submit' %}">
+        {% csrf_token %}
+            <table style="width:100%;text-align:left;">
+                <tr>
+                    <td>
+                        <label for='listing_description' style="color: gray;">Job Title Description (Use 4-8 Key Words) : </label>
+                        <input type="text" name='listing_description' id='listing_description' required>
+                        <br><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for='job_title' style="color: gray;">Job Title: </label>
+                        <input type="text" name='job_title' id='job_title' required> 
+                        <br><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for='job_description' style="color: gray;">Job Description: </label>
+                        <input type="text" name='job_description' id='job_description' required> 
+                        <br><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td> 
+                        <label for='job_type' style="color: gray;">Job Type: </label> 
+                        <select id="job_type" name="job_type" required>
+                            <option disabled selected value> -- Select -- </option>
+                            <option value="Internship">Internship</option>
+                            <option value="Full-Time">Full-Time</option>
+                            <option value="Part-Time">Part-Time</option>
+                        </select>
+                        <br><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for='job_city' style="color: gray;">City:</label>
+                        <input type="text" name='job_city' id='job_city' required>
+                        <br><br> 
+                        <label for='job_state' style="color: gray;">State: </label>
+                        <select id='job_state' name='job_state' required>
+                            <option disabled selected value> -- Select -- </option>
+                            <option value="AL">Alabama</option>
+                            <option value="AK">Alaska</option>
+                            <option value="AZ">Arizona</option>
+                            <option value="AR">Arkansas</option>
+                            <option value="CA">California</option>
+                            <option value="CO">Colorado</option>
+                            <option value="CT">Connecticut</option>
+                            <option value="DE">Delaware</option>
+                            <option value="DC">District Of Columbia</option>
+                            <option value="FL">Florida</option>
+                            <option value="GA">Georgia</option>
+                            <option value="HI">Hawaii</option>
+                            <option value="ID">Idaho</option>
+                            <option value="IL">Illinois</option>
+                            <option value="IN">Indiana</option>
+                            <option value="IA">Iowa</option>
+                            <option value="KS">Kansas</option>
+                            <option value="KY">Kentucky</option>
+                            <option value="LA">Louisiana</option>
+                            <option value="ME">Maine</option>
+                            <option value="MD">Maryland</option>
+                            <option value="MA">Massachusetts</option>
+                            <option value="MI">Michigan</option>
+                            <option value="MN">Minnesota</option>
+                            <option value="MS">Mississippi</option>
+                            <option value="MO">Missouri</option>
+                            <option value="MT">Montana</option>
+                            <option value="NE">Nebraska</option>
+                            <option value="NV">Nevada</option>
+                            <option value="NH">New Hampshire</option>
+                            <option value="NJ">New Jersey</option>
+                            <option value="NM">New Mexico</option>
+                            <option value="NY">New York</option>
+                            <option value="NC">North Carolina</option>
+                            <option value="ND">North Dakota</option>
+                            <option value="OH">Ohio</option>
+                            <option value="OK">Oklahoma</option>
+                            <option value="OR">Oregon</option>
+                            <option value="PA">Pennsylvania</option>
+                            <option value="RI">Rhode Island</option>
+                            <option value="SC">South Carolina</option>
+                            <option value="SD">South Dakota</option>
+                            <option value="TN">Tennessee</option>
+                            <option value="TX">Texas</option>
+                            <option value="UT">Utah</option>
+                            <option value="VT">Vermont</option>
+                            <option value="VA">Virginia</option>
+                            <option value="WA">Washington</option>
+                            <option value="WV">West Virginia</option>
+                            <option value="WI">Wisconsin</option>
+                            <option value="WY">Wyoming</option>
+                        </select>
+                        <br><br>
+                        <label for='job_zip' style="color: gray;">Zip Code: </label>
+                        <input type="text" name='job_zip' id='job_zip' required>
+                        <br><br> 
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for='link_to_application' style="color: gray;">Link to External Application (if blank, BCR will send you applicants resume) : </label>
+                        <input type="url" name='link_to_application' id='link_to_application'> 
+                        <br><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for='wage_range' style="color: gray;">Wage Range: </label> 
+                        <select id="wage_range" name="wage_range" required>
+                            <option disabled selected value> -- Select -- </option>
+                            <option value="state minimum hourly wage">State Minimum Hourly Wage</option>
+                            <option value="less than 10k yearly">Less than 10K Yearly</option>
+                            <option value="10-19k yearly">10-19K Yearly</option>
+                            <option value="20k-39k yearly">20k-39K Yearly</option>
+                            <option value="40to64">40k-64K Yearly</option>
+                            <option value="65-70k yearly">65k-70K Yearly</option>
+                            <option value="70-99k yearly">70-99K Yearly</option>
+                            <option value="100plus">100K+</option>
+                            <option value="undisclosed">Undisclosed</option>
+                        </select>
+                        <br><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for='relocation_assistance' style="color: gray;">Will you offer Relocation Assistance?: </label>
+                        <input type="checkbox" name='relocation_assistance' id='relocation_assistance'>
+                        <br><br>
+                        <label for='extra_documents' style="color: gray;">Will you require applicants to submit supplementary documents other than a resume? : </label>
+                        <input type="checkbox" name='extra_documents' id='extra_documents'>
+                        <br><br>
+                        <label for='deadline_date' style="color: gray;">What is the deadline date for applications? Must be 6 weeks from opening : </label>
+                        <input type="date" name='deadline_date' id='deadline_date' required>
+                        <br><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="submit">Submit Job Listing</button>
+                    </td>
+                </tr>
+            </table>            
+            <input hidden type="text" name='user_id' id='user_id' value ={{user.id}} required>
+        </form>
+    {% endif %}
+{% endif %}
 </header>
 
-{% endblock %}
+
 
 <script>
     var today = new Date();
@@ -169,5 +393,8 @@ deadline_date
     } 
 
     today = yyyy+'-'+mm+'-'+dd;
-    document.getElementById("deadline_date").setAttribute("min", today);
+    document.getElementById("deadline_date").setAttribute("state minimum hourly wage", today);
 </script>
+
+
+{% endblock %}
