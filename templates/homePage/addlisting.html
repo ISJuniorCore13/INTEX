@@ -10,7 +10,7 @@ deadline_date
 <p>{{message}}</p>
 {% if user.is_authenticated and user.groups.all.0.name == 'employer' %}
     {% if job != None %}
-         <form name="joblisting" method="post" action="{% url 'submit' %}">
+         <form name="joblisting" method="post" action="{% url 'update' %}">
          {% csrf_token %}
             <table style="width:100%;text-align:left;">
                 <tr>
@@ -129,7 +129,7 @@ deadline_date
                 </tr>
                 <tr>
                     <td>
-                        <label for='link_to_application' style="color: gray;">Link to External Application (if blank, BCR will send you applicants resume) : </label>
+                        <label for='link_to_application' style="color: gray;">Link to External Application: </label>
                         <input type="url" name='link_to_application' id='link_to_application' value ={{job.job_link_to_application}}> 
                         <br><br>
                     </td>
@@ -218,12 +218,15 @@ deadline_date
                 </tr>
                 <tr>
                     <td>
-                        <button type="submit">Submit Job Listing</button>
+                        <button type="submit">Update Job Listing</button>
                     </td>
                 </tr>
             </table>
 
             <input hidden type="text" name='user_id' id='user_id' value ={{user.id}} required>
+            <input hidden type="text" name='job_id' id='job_id' value ={{job.id}} required>
+
+            
         </form>
     {% else %}
         <form name="joblisting" method="post" action="{% url 'submit' %}">
@@ -330,7 +333,7 @@ deadline_date
                 </tr>
                 <tr>
                     <td>
-                        <label for='link_to_application' style="color: gray;">Link to External Application (if blank, BCR will send you applicants resume) : </label>
+                        <label for='link_to_application' style="color: gray;">Link to External Application: </label>
                         <input type="url" name='link_to_application' id='link_to_application'> 
                         <br><br>
                     </td>
@@ -393,7 +396,7 @@ deadline_date
     } 
 
     today = yyyy+'-'+mm+'-'+dd;
-    document.getElementById("deadline_date").setAttribute("state minimum hourly wage", today);
+    document.getElementById("deadline_date").setAttribute("min", today);
 </script>
 
 
