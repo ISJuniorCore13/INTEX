@@ -53,7 +53,7 @@
                                         </div>
                                         <div class="col-4">
                                             <form name="joblisting" method="post" action="{% url 'removeListing' %}" >
-                                                {% csrf_token %}
+                                            {% csrf_token %}
                                                 <input hidden name='remove_id' id='remove_id' value = {{f.id}}>
                                                 <button type = "submit">Delete</button>
                                             <form>
@@ -123,7 +123,7 @@
                                         </div>
                                         <div class="col-4">
                                             <form name="joblisting" method="post" action="{% url 'removeListing' %}" >
-                                                {% csrf_token %}
+                                            {% csrf_token %}
                                                 <input hidden name='remove_id' id='remove_id' value = {{s.id}}>
                                                 <button type = "submit">Delete</button>
                                             <form>
