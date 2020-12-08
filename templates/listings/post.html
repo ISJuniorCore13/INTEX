@@ -12,8 +12,18 @@
             <p> Close Date: {{job_object.deadline_date}}</p>
             </div>
         </div>
-        <a class="btn btn-primary btn-lg text-uppercase text-center" href={{job_object.job_link_to_application}} target = "_blank">Apply</a>
+        <a class="btn btn-primary btn-lg text-uppercase text-center" 
+            href={{job_object.job_link_to_application}} target = "_blank" onclick="displayChoice()">Apply</a>
         <br><br>
+        <div class="row">
+            <fieldset class="col-sm" id="choice" hidden>
+                <label for="yesOrNo">Did you complete the application?</label>
+                <a href="{% url 'externalsurvey' %}" ><input type="button" class="btn btn-primary btn-sm text-uppercase text-center" 
+                    value="Yes"></a>
+                <input type="button" class="btn btn-primary btn-sm text-uppercase text-center"
+                    onclick="hideChoice()" value="No">
+            </fieldset>
+        </div>
         <div class="row">
             <div class="col-lg">
                 <p> Job Description 
@@ -30,4 +40,14 @@
             <a class="nav-link" href="http://127.0.0.1:8000/accounts/login/">Log In</a>
         </div>
     {% endif%}
+
+    <script>
+        function displayChoice() {
+            document.getElementById('choice').hidden = false
+        }
+
+        function hideChoice() {
+            document.getElementById('choice').hidden = true
+        }
+    </script>
 {% endblock%}
