@@ -7,16 +7,16 @@
 
     <form name="externalApp" method="post" action="{% url 'survey' %}">
         {% csrf_token %}
-        <label for='ease' style="color: gray;">How easy was the application? (Between 1-5): </label>
+        <label for='ease' style="color: gray;">How easy was the application?: </label>
         <input type="range" min="1" max="5" name='ease' id='ease'>
         <br><br>
-        <label for='clarity'style="color: gray;">How clear was the application? (Between 1-5): </label>
+        <label for='clarity'style="color: gray;">How clear was the application?: </label>
         <input type="range" min="1" max="5" name='clarity' id='clarity'> 
         <br><br>
-        <label for='extra' style="color: gray;">Did the application require any extra documents (other than a resume?): </label>
+        <label for='extra' style="color: gray;">Did the application require any extra documents (other than a resume?) : </label>
         <input type="checkbox" name='extra' id='extra'> 
         <br><br>     
-        <button type="submit" href={% url 'survey'%}>Submit</button>
+        <button class="btn btn-primary btn-sm text-uppercase text-center" type="submit" href={% url 'survey'%}>Submit</button>
     </form>
 </header>
 

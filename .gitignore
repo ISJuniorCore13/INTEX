@@ -2,3 +2,5 @@
 */__pycache__/admin.cpython-39.pyc
 *.pyc
 */__pycache__/views.cpython-39.pyc
+*/migrations/0001_initial.py
+*/__pycache__/views.cpython-39.pyc
