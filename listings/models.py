@@ -24,10 +24,10 @@ class Applicant(models.Model):
     zip_code = models.CharField(max_length=10, blank=True)
     birth_date = models.DateTimeField(default=datetime.now, blank=True)
     # resume = models.FileField(upload_to='documents/%Y/%m/%d')
-    photo = models.ImageField(upload_to='photos', blank=True)
+    photo = models.ImageField(upload_to='photos', blank=True, null=True)
     education_lvl = models.ForeignKey(Education, on_delete=models.CASCADE, blank=True)
     minority_status = models.ManyToManyField(Minority_Type, blank=True)
-    user_id = models.OneToOneField(User,models.CASCADE)
+    user = models.OneToOneField(User,models.CASCADE)
     def __str__(self):
         return str(self.first_name) + ' ' + str(self.last_name)
         
@@ -305,22 +305,22 @@ class Skill(models.Model):
         return self.skill_description
 
 class Applicant_Skill(models.Model):
-    Applicant_id = models.ForeignKey(Applicant, on_delete=models.CASCADE)
-    skill_id = models.ForeignKey(Skill, on_delete=models.CASCADE)
+    applicant = models.ForeignKey(Applicant, on_delete=models.CASCADE)
+    skill = models.ForeignKey(Skill, on_delete=models.CASCADE)
     proficiency_lvl = models.IntegerField()
     def __str__(self):
-        return str(self.Applicant_id) + ' has ' + str(self.skill_id) + ' skill at ' + str(self.proficiency_lvl) + ' proficiency.'
+        return str(self.applicant) + ' has ' + str(self.skill) + ' skill at ' + str(self.proficiency_lvl) + ' proficiency.'
 
 class Employer_Size(models.Model):
     size_description = models.CharField(max_length=50)
     def __str__(self):
         return str(self.size_description)
 class Employer(models.Model):
-    size_id = models.ForeignKey(Employer_Size, on_delete=models.CASCADE)
+    size = models.ForeignKey(Employer_Size, on_delete=models.CASCADE)
     employer_name = models.CharField(max_length=30)
     employer_email= models.CharField(max_length=30)
-    employer_logo = models.ImageField(upload_to='photos', blank=True)
-    user_id = models.OneToOneField(User,models.CASCADE)
+    employer_logo = models.ImageField(upload_to='photos', blank=True, null=True)
+    user = models.OneToOneField(User,models.CASCADE)
     def __str__(self):
         return self.employer_name
 
@@ -344,8 +344,8 @@ class Job_Listing(models.Model):
     listing_description = models.CharField(max_length=255)
     job_title = models.CharField(max_length=30)
     job_description = models.CharField(max_length=5000)
-    job_type_id = models.ForeignKey(Job_Type, on_delete=models.CASCADE, related_name='children')
-    employer_id = models.ForeignKey(Employer, on_delete=models.CASCADE, related_name='employer')
+    job_type = models.ForeignKey(Job_Type, on_delete=models.CASCADE, related_name='children')
+    employer = models.ForeignKey(Employer, on_delete=models.CASCADE, related_name='employer')
     job_city = models.CharField(max_length=50)
     job_link_to_application = models.CharField(max_length=255)
     job_state = models.CharField(max_length=2)
@@ -359,11 +359,11 @@ class Job_Listing(models.Model):
         return self.listing_description
 
 class Job_Skill(models.Model):
-    job_listing_id = models.ForeignKey(Job_Listing, on_delete=models.CASCADE)
-    skill_id = models.ForeignKey(Skill, on_delete=models.CASCADE)
+    job_listing = models.ForeignKey(Job_Listing, on_delete=models.CASCADE)
+    skill = models.ForeignKey(Skill, on_delete=models.CASCADE)
     proficiency_lvl = models.IntegerField()
     def __str__(self):
-        return str(self.job_listing_id) + ' has ' + str(self.skill_id) + ' skill at ' + str(self.proficiency_lvl) + ' proficiency.'
+        return str(self.job_listing) + ' has ' + str(self.skill) + ' skill at ' + str(self.proficiency_lvl) + ' proficiency.'
 
 
 class External_Application_Rating(models.Model):
@@ -374,8 +374,8 @@ class External_Application_Rating(models.Model):
         return str(self.ease_of_application)
 class Application(models.Model):
     rating = models.OneToOneField(External_Application_Rating, on_delete=models.CASCADE, blank=True)
-    job_listing_id = models.ForeignKey(Job_Listing, on_delete=models.CASCADE)
-    Applicant_id = models.ForeignKey(Applicant, on_delete=models.CASCADE)
+    job_listing = models.ForeignKey(Job_Listing, on_delete=models.CASCADE)
+    applicant = models.ForeignKey(Applicant, on_delete=models.CASCADE)
     application_date = models.DateTimeField(default=datetime.now)
     def __str__(self):
-        return str(self.application_date) + self.job_listing_id
+        return str(self.application_date) + self.job_listing
