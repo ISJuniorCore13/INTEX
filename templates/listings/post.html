@@ -12,8 +12,12 @@
             <p> Close Date: {{job_object.deadline_date}}</p>
             </div>
         </div>
+        {% if user.groups.all.0.name == 'applicant' %} 
         <a class="btn btn-primary btn-lg text-uppercase text-center" 
             href={{job_object.job_link_to_application}} target = "_blank" onclick="displayChoice()">Apply</a>
+        {% elif user.groups.all.0.name == 'employer' %}
+            <a class="btn btn-primary btn-lg text-uppercase text-center" href='http://127.0.0.1:8000/addjob/{{job_object.id}}'>Edit</a>
+        {% endif %}
         <br><br>
         <div class="row">
             <fieldset class="col-sm" id="choice" hidden>
