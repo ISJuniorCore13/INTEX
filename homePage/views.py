@@ -3,11 +3,14 @@ from listings.models import Job_Listing, Employer, Job_Type
 from datetime import datetime, date
 
 def indexPageView(request):
-    aJobListing = ["Web Developer", "Software Engineer", "Data Analyst"]
+    featured_list = []
+
+    featured_list = Job_Listing.objects.all().order_by('deadline_date')
 
     context = {
-        "JobListings" : aJobListing
+        "featured" : featured_list,
     }
+
     return render(request, 'homePage/index.html', context)
 
 def addListingPageView(request):
