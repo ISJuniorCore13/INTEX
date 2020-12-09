@@ -156,13 +156,27 @@ def removeListingPageView(request):
 def userProfilePageView(request, user_id):
 
     user_id = int(user_id)
-
     user =  User.objects.get(id = user_id)
-
-
-    applicant = Applicant.objects.get(user=user_id)
-
     context = {
-
+        "message" : ''
     }
+     
+    # print(user_id)
+    applicant = Applicant.objects.get(user=user_id)
+    # print(applicant.first_name)
+    skill_list = Applicant_Skill.objects.filter(applicant=applicant.id)
+    # print(skill_list[0])
+    context = {
+        "skills" : skill_list,
+        "applicant" : applicant
+    }
+    # emp = Employer.objects.get(user=user_id)
+    # job_list = Job_Listing.objects.filter(employer=emp.id)
+    # context = {
+    #     "jobs" : job_list,
+    #     "employer" : emp
+    # }
+
+
+
     return render(request, 'homePage/profile.html', context)
