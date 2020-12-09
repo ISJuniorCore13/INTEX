@@ -5,19 +5,27 @@
     {% csrf_token %}
 
 
-    {% if message == "Success"%}
+    {% if msg2 == "Success"%}
         <a style="width: 50%;" class='a_btn' href="http://127.0.0.1:8000/accounts/logout/">Sign In</a>
     {%else%}
 
     <div class="container">
-        <h1 style="color:#4E9CAF;">{{message}}</h1>
+        <h1 style="color:#4E9CAF;">{{message}} {{msg2}}</h1>
         <form name="form" method="post" action="{% url 'enter' %}">
         {% csrf_token %}
+            {% if message == 'Employer'%}
+            <label for='first'>Company Name:</label>
+            {% else %}
             <label for='first'>First Name:</label>
+            {% endif %}
             <input type="text" name='first' id='first'>
+            {% if message == 'Applicant'%}
             <br><br>
             <label for='last'>Last Name:</label>
             <input type="text" name='last' id='last'> 
+            {% else %}
+            <input hidden value = 'no-value' type="text" name='last' id='last'> 
+            {% endif %}
             <br><br>
             <label for='password'>Password:</label>
             <input type="password" name='password' id='password'>
