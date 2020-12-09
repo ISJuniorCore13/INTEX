@@ -1,13 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-<div class = "container" style="float: center;" >
-    <div style="float: center;" >
-        <p  style="float: center;">Logged out!</p>  
-        <a  style="float: center;" href="{% url 'login'%}">Click here to login again.</a>
-        </form>
-    </div>
+<br><br><br><br>
+<div class="container text-center" >
+        <h4 style="color: #296F90;">You have successfully logged out</h4><br>
+        <a class="btn btn-primary btn-md text-uppercase text-center" href="{% url 'login'%}">Login</a>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </div>
 
 {% endblock %}

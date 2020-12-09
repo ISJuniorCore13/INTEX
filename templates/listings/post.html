@@ -39,9 +39,11 @@
         </div>
     </div>
     {% else %}
-        <div class="container">
-            <h3 style="color: #296F90;"> Please log in to view this information. </h3>
-            <a class="nav-link" href="http://127.0.0.1:8000/accounts/login/">Log In</a>
+    <br><br><br><br>
+        <div class="container text-center">
+            <h4 style="color: #296F90;"> Please log in to view this information. </h4> <br>
+            <a class="btn btn-primary btn-md text-uppercase text-center" href="{% url 'login'%}">Log In</a>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         </div>
     {% endif%}
 
