@@ -31,6 +31,9 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ml-auto">
+                    {% if user.is_authenticated %}
+                    <li class="nav-item font-weight-bold" style="color:#296F90;padding-right:15px;padding-top:5px;">Hi, {{user.first_name}}</li>
+                    {% endif %}
                     <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:8000/">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:8000/listings/">Search</a></li>
                     {% if user.is_authenticated %}

@@ -5,7 +5,7 @@
     <form name="form" method="post" action="{% url 'search' %}">
         {% csrf_token %}
         <input type="text" name='search' placeholder="search" id='search'>
-        <a class="btn btn-primary btn-sm" id='search-button' onclick="" ><i class="fa fa-search"></i></a>
+        <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-search"></i></button>
     </form>
     <br><br>
 
@@ -37,7 +37,7 @@
                                             <p>Deadline: {{f.deadline_date}}</p>
                                         </div>
                                     </div>
-                                {% elif user.groups.all.0.name == 'employer' %} 
+                                {% elif user.groups.all.0.name == 'employer' and f.employer.user_id == user.id %} 
                                     <div class="row">
                                         <div class="col-4">
                                             <p>Employer: {{f.employer}}</p>
@@ -58,7 +58,7 @@
                                             <form name="joblisting" method="post" action="{% url 'removeListing' %}" >
                                             {% csrf_token %}
                                                 <input hidden name='remove_id' id='remove_id' value = {{f.id}}>
-                                                <button class="btn btn-primary btn-sm" type = "submit">Delete</button>
+                                                <button class="btn btn-primary btn-sm" type="submit">Delete</button>
                                             <form>
                                         </div>
                                     </div>
@@ -80,7 +80,7 @@
                     <li>
                     <br>
             {% endfor %}  
-            </ul
+        </ul>
     </div>
     {% else %}
     <div class="containter bg-light"> 
@@ -107,7 +107,7 @@
                                             <p>Deadline: {{s.deadline_date}}</p>
                                         </div>
                                     </div>
-                                {% elif user.groups.all.0.name == 'employer' %} 
+                                {% elif user.groups.all.0.name == 'employer' and s.employer.user_id == user.id %} 
                                     <div class="row">
                                         <div class="col-4">
                                             <p>Employer: {{s.employer}}</p>
@@ -122,13 +122,13 @@
                                             <p>Deadline: {{s.deadline_date}}</p>
                                         </div>
                                         <div class="col-4">
-                                            <a href='http://127.0.0.1:8000/addjob/{{s.id}}'>Edit</a>
+                                            <a  class="btn btn-primary btn-sm" href='http://127.0.0.1:8000/addjob/{{s.id}}'>Edit</a>
                                         </div>
                                         <div class="col-4">
                                             <form name="joblisting" method="post" action="{% url 'removeListing' %}" >
                                             {% csrf_token %}
                                                 <input hidden name='remove_id' id='remove_id' value = {{s.id}}>
-                                                <button type = "submit">Delete</button>
+                                                <button class="btn btn-primary btn-sm" type="submit">Delete</button>
                                             <form>
                                         </div>
                                     </div>

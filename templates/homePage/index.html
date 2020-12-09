@@ -22,9 +22,8 @@
                     {% for job in featured %} 
                             <li>
                                 <article>
-                                    <a class='' href="{% url 'post' job_title=job.job_title jobListing_id=job.id %}">
-                                        <img height="100" src='' alt="">
-                                        <span class="caption">{{ job.job_title }}</span>
+                                    <a class='row font-weight-bold' style="font-size: 18px;" href="{% url 'post' job_title=job.job_title jobListing_id=job.id %}">
+                                     {{ job.job_title }}
                                     </a> 
                                         <div class="row">
                                         <div class="col-auto">
