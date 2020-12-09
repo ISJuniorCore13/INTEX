@@ -80,13 +80,53 @@ def searchPageView(request):
 
     return render(request, 'listings/listings.html', context)
 
+def matchbox_recommender(org_id_value, job_id_value) :
+    import urllib
+    from urllib import request
+    import json 
+    import ast
+
+    data =  {
+            "Inputs": {
+                    "input1":
+                    {
+                        "ColumnNames": ["organization_id", "job_title_id"],
+                        "Values": [ [ org_id_value, job_id_value ], ]
+                    },      }}
+    body = str.encode(json.dumps(data))
+    url = 'https://ussouthcentral.services.azureml.net/workspaces/1993b100a23d4cda87098e65eaad4e08/services/c723501ba2634ed6904ac66117f339b7/execute?api-version=2.0&details=true'
+    api_key = 'fQzn6wIKxzgxA3gmGl+j8KnMAu6JPXIe9M8tgiFXWAbYuf2JSIaQ/4WM5B0sBQUpMURAwPqY3ip3/pZkgyfzdQ==' # Replace this with the API key for the web service
+    headers = {'Content-Type':'application/json', 'Authorization':('Bearer '+ api_key)}
+
+    req = urllib.request.Request(url, body, headers) 
+    response = urllib.request.urlopen(req)
+
+    result = response.read()
+    result = result.decode('utf-8')
+    result = ast.literal_eval(result)
+    results = (
+        result['Results']['output1']['value']['Values'][0][0],
+        result['Results']['output1']['value']['Values'][0][1],
+        result['Results']['output1']['value']['Values'][0][2],
+        result['Results']['output1']['value']['Values'][0][3],
+        result['Results']['output1']['value']['Values'][0][4],
+        result['Results']['output1']['value']['Values'][0][5],
+        result['Results']['output1']['value']['Values'][0][6],
+        result['Results']['output1']['value']['Values'][0][7],
+        result['Results']['output1']['value']['Values'][0][8],
+        result['Results']['output1']['value']['Values'][0][9]
+    )
+    return results
+
 def jobPostView(request, job_title, jobListing_id):
 
     job_object = Job_Listing.objects.get(id = jobListing_id)
+    results = matchbox_recommender(job_object.employer.id, jobListing_id)
     context = {
         "job_object" : job_object,
         "job_title" : job_title,
-        "jobListing_id" : jobListing_id
+        "jobListing_id" : jobListing_id,
+        "recommender_results" : results
     }
     return render(request, 'listings/post.html', context)
 
