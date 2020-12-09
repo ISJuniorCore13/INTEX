@@ -122,16 +122,16 @@ def jobPostView(request, job_title, jobListing_id):
 
     job_object = Job_Listing.objects.get(id = jobListing_id)
     results = matchbox_recommender(job_object.employer.id, jobListing_id)
-    # rec_jobs = []
+    rec_jobs = []
 
-    # for r in results :
-    #     rec_jobs.append(Job_Listing.objects.get(id = r))
+    for r in results :
+        rec_jobs.append(Job_Listing.objects.get(id = r))
 
     context = {
         "job_object" : job_object,
         "job_title" : job_title,
         "jobListing_id" : jobListing_id,
-        # "recommender_results" : rec_jobs
+        "recommender_results" : rec_jobs
     }
     return render(request, 'listings/post.html', context)
 

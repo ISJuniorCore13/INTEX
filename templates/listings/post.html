@@ -44,7 +44,7 @@
             <div class="col-lg">
                 <h4 class="text-left" style="color:#296F90; padding-left: 30px;">Similar Job Postings</h4>
                 <ul class="text-left"  style="list-style-type: none;">
-                    {% comment %} {% for r in recommender_results %} 
+                    {% for r in recommender_results %} 
                             <li>
                                 <article>
                                     <h5 class='' style="color: #F5B95A;"><a href="{% url 'post' job_title=r.job_title jobListing_id=r.id %}">{{ r.job_title }}</a></h5> 
@@ -67,7 +67,7 @@
                                 </article>
                             <li>
                             <br>
-                    {% endfor %} {% endcomment %}
+                    {% endfor %}
                  </ul>
             </div> 
         </div>
