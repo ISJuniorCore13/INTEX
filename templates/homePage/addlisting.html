@@ -140,7 +140,7 @@ deadline_date
                         <select id="wage_range" name="wage_range" value ={{job.job_wage_range}} required>
                             <option disabled selected value> -- Select -- </option>
 
-                            {% if job.job_wage_range == 'State Minimum Hourly Wage'%}
+                            {% if job.job_wage_range == 'state minimum hourly wage'%}
                                 <option value="state minimum hourly wage" selected >state minimum hourly wage</option>
                             {% else %}
                                 <option value="state minimum hourly wage">State Minimum Hourly Wage</option>
@@ -218,7 +218,7 @@ deadline_date
                 </tr>
                 <tr>
                     <td>
-                        <button type="submit">Update Job Listing</button>
+                        <button class="btn btn-primary btn-sm" type="submit">Update Job Listing</button>
                     </td>
                 </tr>
             </table>
@@ -371,7 +371,7 @@ deadline_date
                 </tr>
                 <tr>
                     <td>
-                        <button type="submit">Submit Job Listing</button>
+                        <button class="btn btn-primary btn-sm" type="submit">Submit Job Listing</button>
                     </td>
                 </tr>
             </table>            

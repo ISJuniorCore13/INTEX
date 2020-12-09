@@ -9,6 +9,9 @@
     </form>
     <br><br>
 
+    {% if user.groups.all.0.name == 'employer' %} 
+    <li class="nav-item"><a class="btn btn-primary btn-lg text-uppercase text-center" href="http://127.0.0.1:8000/addjob/">Add Job</a></li>
+    {% endif %}
     {% if message == 'feat' %}
     <div class="containter bg-light"> 
         <br>
@@ -49,13 +52,13 @@
                                             <p>Deadline: {{f.deadline_date}}</p>
                                         </div>
                                         <div class="col-4">
-                                            <a href='http://127.0.0.1:8000/addjob/{{f.id}}'>Edit</a>
+                                            <a class="btn btn-primary btn-sm" href='http://127.0.0.1:8000/addjob/{{f.id}}'>Edit</a>
                                         </div>
                                         <div class="col-4">
                                             <form name="joblisting" method="post" action="{% url 'removeListing' %}" >
                                             {% csrf_token %}
                                                 <input hidden name='remove_id' id='remove_id' value = {{f.id}}>
-                                                <button type = "submit">Delete</button>
+                                                <button class="btn btn-primary btn-sm" type = "submit">Delete</button>
                                             <form>
                                         </div>
                                     </div>
