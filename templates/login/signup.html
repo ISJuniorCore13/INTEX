@@ -10,7 +10,7 @@
     {%else%}
 
     <div class="container">
-        <h1>{{message}}</h1>
+        <h1 style="color:#4E9CAF;">{{message}}</h1>
         <form name="form" method="post" action="{% url 'enter' %}">
         {% csrf_token %}
             <label for='first'>First Name:</label>
@@ -29,7 +29,8 @@
             <input type="email" name='email' id='email'> 
             <br><br>     
             <input hidden name='sup_type' id='sup_type' value = {{message}}>
-            <button class="a_btn" type="submit">Sign Up</button>
+            <button class="btn btn-primary btn-lg text-center a_btn" 
+            style="width: 25%;" type="submit">Sign Up</button>
         </form>
     </div>
     {%endif%}
