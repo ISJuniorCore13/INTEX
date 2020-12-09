@@ -3,16 +3,17 @@
 
 {% block content %}
 
-<div class="container">
+<div class="container text-center">
+    <br><br>
     <div class="row">
-        <div style="float: center; background: #F5B95A;" class="col-5">
-            <h1>Applicant</h1>
-            <div class="container" style="float: center;" >
-                <form style="float: center;"  method="post" action="{% url 'login' %}">
+        <div class="col-6">
+            <h1 style="color:#4E9CAF;">Applicant</h1>
+            <br>
+            <div class="container">
+                <form method="post" action="{% url 'login' %}">
                     {% csrf_token %}
-                    
-                    <table  style="margin-left: auto; margin-right: auto;" >
-                    <div style="float: center;" >
+                    <table  style="margin-left: auto; margin-right: auto;">
+                    <div>
                         <tr>
                             <td>{{ form.username.label_tag }}</td>
                             <td>{{ form.username }}</td>
@@ -23,23 +24,25 @@
                         </tr>
                     </div>
                     </table>
-                    
-                    <input style="width: 25%;" type="submit" class='a_btn' value="Log In" />
+                    <br>  
+                    <input type="submit" class="btn btn-primary btn-lg text-center a_btn" 
+                        style="border-color:rgba(0,0,0,0.0);" value="Log In"/>
                     <br>
-                    <input type="hidden" name="next" value="{{ next }}" />
-                    <a style="width: 25%;" class='a_btn' href="http://127.0.0.1:8000/login/signup/Applicant">Sign Up</a>
-
+                    <a href="http://127.0.0.1:8000/login/signup/Applicant" style="width: 25%;">
+                        <input type="button" type="submit" class="btn btn-primary btn-lg text-center a_btn text-decoration-none" 
+                        style="border-color:rgba(0,0,0,0.0);" name="next" value="Sign Up"/>
+                    </a>
                 </form>
             </div>
         </div> 
-        <div style="float: center; background: #6c757d;" class="col-5">
-            <h1>Employer</h1>
-            <div  class="container"  style="float: center;" >
-                <form style="float: center;"  method="post" action="{% url 'login' %}">
+        <div class="col-6">
+            <h1 style="color:#F5B95A;">Employer</h1>
+            <br>
+            <div class="container">
+                <form  method="post" action="{% url 'login' %}">
                     {% csrf_token %}
-                    
                     <table  style="margin-left: auto; margin-right: auto;" >
-                    <div style="float: center;" >
+                    <div>
                         <tr>
                             <td>{{ form.username.label_tag }}</td>
                             <td>{{ form.username }}</td>
@@ -50,16 +53,18 @@
                         </tr>
                     </div>
                     </table>
-                    
-                    <input style="width: 25%;" type="submit" class='a_btn' value="Log In" />
                     <br>
-                    <input type="hidden" name="next" value="{{ next }}" />
-                    <a style="width: 25%;" class='a_btn' href="http://127.0.0.1:8000/login/signup/Employer">Sign Up</a>
-
+                    <input style="width: 25%;border-color:rgba(0,0,0,0.0);" type="submit" class="btn btn-primary btn-lg text-center font-weight-bold" value="Log In" />
+                    <br><br>
+                     <a href="http://127.0.0.1:8000/login/signup/Employer" style="width: 25%;">
+                        <input type="button" type="submit" class="btn btn-primary btn-lg text-center text-decoration-none font-weight-bold" 
+                        style="border-color:rgba(0,0,0,0.0);" name="next" value="Sign Up"/>
+                    </a>
                 </form>
             </div>
         </div>
     </div> 
+    <br><br><br><br><br><br><br><br><br><br>
 </div> 
 {% endblock %}
     
