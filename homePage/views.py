@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from listings.models import Job_Listing, Employer, Job_Type
+from listings.models import Job_Listing, Employer, Job_Type, Applicant, Applicant_Skill, Skill
+from django.contrib.auth.models import User, Group
 from datetime import datetime, date
 
 def indexPageView(request):
@@ -150,3 +151,18 @@ def removeListingPageView(request):
     remove_id = int(remove_id)
     Job_Listing.objects.get(id=remove_id).delete()
     return redirect('http://127.0.0.1:8000/listings/')
+
+
+def userProfilePageView(request, user_id):
+
+    user_id = int(user_id)
+
+    user =  User.objects.get(id = user_id)
+
+
+    applicant = Applicant.objects.get(user=user_id)
+
+    context = {
+
+    }
+    return render(request, 'homePage/profile.html', context)
