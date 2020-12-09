@@ -22,11 +22,21 @@
                     {% for job in featured %} 
                             <li>
                                 <article>
-                                    <!-- src='' until we have the database set up, then we can put the source as the file on the database -->
                                     <a class='' href="{% url 'post' job_title=job.job_title jobListing_id=job.id %}">
                                         <img height="100" src='' alt="">
                                         <span class="caption">{{ job.job_title }}</span>
                                     </a> 
+                                        <div class="row">
+                                        <div class="col-auto">
+                                            <p style="font-size: 13px;">Employer: {{job.employer}}</p>
+                                        </div>
+                                        <div class="col-auto">
+                                            <p style="font-size: 13px;">Location: {{job.job_city}}, {{job.job_state}}</p>
+                                        </div>
+                                        <div class="col-auto">
+                                            <p style="font-size: 13px;">Deadline: {{job.deadline_date}}</p>
+                                        </div>
+                                    </div>
                                 </article>
                             <li>
                     {% endfor %}  
@@ -34,3 +44,25 @@
                 </div>
               </div>
 {% endblock %}
+
+
+
+
+{% comment %} 
+
+        <ul class="text-left"  style="list-style-type: none;">
+            {% for f in featured %} 
+                    <li>
+                        <article>
+                            <div class="conatiner">
+                                    <div class="row">
+                                        <div class="col-auto">
+                                            <p>Employer: {{job.employer}}</p>
+                                        </div>
+                                        <div class="col-auto">
+                                            <p>Location: {{job.job_city}}, {{job.job_state}}</p>
+                                        </div>
+                                        <div class="col-auto">
+                                            <p>Deadline: {{job.deadline_date}}</p>
+                                        </div>
+                                    </div> {% endcomment %}
