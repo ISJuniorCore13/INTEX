@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% block content%}
+
+    {% csrf_token %}
+
+    {% if user.is_authenticated and user.groups.all.0.name == 'employer' %}
+        <header class='masthead'>
+            <div class='row'>
+                <div class='col-lg'>
+                    <h2>Employer Profile {{employer.employer_name}}</h2>
+                </div>
+                <div class='col'>
+                <ul class="text-left"  style="list-style-type: none;">
+                    {%for j in jobs %%}
+                        <li>
+                        <article>
+                            <h5 class='' style="color: #F5B95A;"><a href="http://127.0.0.1:8000/listings/">{{ j.job_title }}</a></h5> 
+                            <div class="conatiner">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <p>Employer: {{j.employer}}</p>
+                                    </div>
+                                    <div class="col-4">
+                                        <p>Location: {{j.job_city}}, {{j.job_state}}</p>
+                                    </div>
+                                    <div class="col-4">
+                                        <p>Wage: {{j.job_wage_range}}</p>
+                                    </div>
+                                    <div class="col-4">
+                                        <p>Deadline: {{j.deadline_date}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                </div>
+        </header>
+    {% elif user.is_authenticated and user.groups.all.0.name == 'applicant' %}
+         <header class="masthead">
+            <div>
+                <h2>Applicant Profile {{applicant.first_name}}</h2>
+            </div>
+            <form name="applicantSkills" method="post" action="{% url '' %}">
+         {% csrf_token %}
+            <ul class="text-left"  style="list-style-type: none;">
+            {%for s in skills %%}
+                <li>
+                <article>
+                    <table style="width:100%;text-align:left;">
+                        <tr>
+                            <td>
+                                <label for={{s.skill}} style="color: gray;">{{s.skill}}: </label>
+                                <input type="checkbox" name={{applicantSkills.skill}} id='{{s.skill}}' value ={{s.skill}} >
+                                <label for={{s.skill}} style="color: gray;">Proficiency Level: </label> 
+                                <select id="{{s.skill}}_rating" name="{{s.skill}}_rating"  required>
+                                    <option disabled selected value> -- Select -- </option>
+                                    
+                                    {% if s.skill.proficiency_lvl == 1%}
+                                        <option value="1" selected >1</option>
+                                    {% else %}
+                                        <option value="1">1</option>
+                                    {% endif %}
+
+                                    {% if s.skill.proficiency_lvl == 2%}
+                                        <option value="2" selected>2</option>
+                                    {% else %}
+                                        <option value="2">2</option>
+                                    {% endif %}
+
+                                    {% if s.skill.proficiency_lvl == 3%}
+                                        <option value=3 selected>3</option>
+                                    {% else %}
+                                        <option value=3>3</option>
+                                    {% endif %}
+
+                                    {% if s.skill.proficiency_lvl == 4%}
+                                        <option value=4 selected>4</option>
+                                    {% else %}
+                                        <option value=4>4</option>
+                                    {% endif %}
+
+                                    {% if s.skill.proficiency_lvl == 5%}
+                                        <option value=5 selected>5</option>
+                                    {% else %}
+                                        <option value=5>5</option>
+                                    {% endif %}
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                </article>
+            {% end for%}
+            </ul>
+            </form>
+        </header>
+{% endblock %}
