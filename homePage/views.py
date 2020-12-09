@@ -4,9 +4,17 @@ from django.contrib.auth.models import User, Group
 from datetime import datetime, date
 
 def indexPageView(request):
+    job_list = []
     featured_list = []
 
-    featured_list = Job_Listing.objects.all().order_by('deadline_date')
+    job_list = Job_Listing.objects.all().order_by('deadline_date')
+
+    i = 1
+    for j in job_list :
+        if i <= 4 :
+            featured_list.append(j)
+        i += 1
+
 
     context = {
         "featured" : featured_list,
