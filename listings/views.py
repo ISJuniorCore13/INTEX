@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Job_Listing, Employer, Job_Type, External_Application_Rating
 # Create your views here.
 def indexPageView(request):
@@ -104,7 +104,7 @@ def matchbox_recommender(org_id_value, job_id_value) :
     result = response.read()
     result = result.decode('utf-8')
     result = ast.literal_eval(result)
-    results = (
+    results = [
         result['Results']['output1']['value']['Values'][0][0],
         result['Results']['output1']['value']['Values'][0][1],
         result['Results']['output1']['value']['Values'][0][2],
@@ -115,18 +115,23 @@ def matchbox_recommender(org_id_value, job_id_value) :
         result['Results']['output1']['value']['Values'][0][7],
         result['Results']['output1']['value']['Values'][0][8],
         result['Results']['output1']['value']['Values'][0][9]
-    )
+    ]
     return results
 
 def jobPostView(request, job_title, jobListing_id):
 
     job_object = Job_Listing.objects.get(id = jobListing_id)
     results = matchbox_recommender(job_object.employer.id, jobListing_id)
+    # rec_jobs = []
+
+    # for r in results :
+    #     rec_jobs.append(Job_Listing.objects.get(id = r))
+
     context = {
         "job_object" : job_object,
         "job_title" : job_title,
         "jobListing_id" : jobListing_id,
-        "recommender_results" : results
+        # "recommender_results" : rec_jobs
     }
     return render(request, 'listings/post.html', context)
 
@@ -151,4 +156,4 @@ def surveySubmitView(request):
     }
     
 
-    return render(request, 'listings/externalAppSurvey.html', context)
+    return redirect('http://127.0.0.1:8000/listings/', context)

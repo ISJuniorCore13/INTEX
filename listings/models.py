@@ -378,4 +378,4 @@ class Application(models.Model):
     applicant = models.ForeignKey(Applicant, on_delete=models.CASCADE)
     application_date = models.DateTimeField(default=datetime.now)
     def __str__(self):
-        return str(self.application_date) + self.job_listing
+        return str(self.application_date) + self.job_listing.job_title
