@@ -124,6 +124,20 @@ def jobPostView(request, job_title, jobListing_id):
     results = matchbox_recommender(job_object.employer.id, jobListing_id)
     rec_jobs = []
 
+    job_docs = job_object.requires_additional_documents
+
+    reloc = job_object.relocation_assistance
+
+    if reloc == True :
+        reloc = 'Yes'
+    else :
+        reloc = 'No'
+
+    if job_docs == True :
+        job_docs = 'Yes'
+    else :
+        job_docs = 'No'
+
     for r in results :
         rec_jobs.append(Job_Listing.objects.get(id = r))
 
@@ -131,7 +145,9 @@ def jobPostView(request, job_title, jobListing_id):
         "job_object" : job_object,
         "job_title" : job_title,
         "jobListing_id" : jobListing_id,
-        "recommender_results" : rec_jobs
+        "recommender_results" : rec_jobs,
+        "job_docs" : job_docs,
+        "reloc" : reloc,
     }
     return render(request, 'listings/post.html', context)
 

@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
-        <header class="masthead bg-light">
-            <h1 style="color:#296F90;">Welcome To Black Cyber Recruiter</h1>
+{% load static %}
+        <header class="masthead" style="background-image: url({% static 'images/homebg.jpg' %});padding-bottom:375px;">
+            <h1 style="color:#38B6A9;text-shadow: -1px 0px white, 1px 0px white, 0px -1px white, 0px 1px white;font-size:70px;">Welcome To Black Cyber Recruiter</h1>
             <br><br>
-            <h3 class="masthead-subheading" style="color:#38B6A9;">We help connect minorities with job opportunities</h3>
+            <h3 class="masthead-subheading" style="color:#296F90;text-shadow: -1px 0px white, 1px 0px white, 0px -1px white, 0px 1px white;font-size:40px;">Connecting minorities with job opportunities</h3>
             <a class="btn btn-primary btn-xl text-uppercase text-center" style="width: 50%; height: 200%;" href="http://127.0.0.1:8000/listings/">Search Jobs</a>
         </header>
         <br>
@@ -11,8 +12,15 @@
             <div class="row">
               <div class="col-lg">
                 <h4 class="text-center" style="color:#296F90;">Our Mission</h4>
-                <p class="text-left">At Black Cyber Recruiter, we have simplified the job search and application application process to help connect minorities with opportunities.
-                    We have made sure employers make their listings crystal clear, with application deadlines shown in search results.
+                <p class="text-left">Proposed by Christabel Monica Ugbang Agbonkonkon, Black Cyber Recruiter (BCR) is dedicated to 
+                    connecting blacks and other minorities with job opportunities. BCR simplifies the job search 
+                    and application process to make finding your dream job easier. <br> 
+                    <b>For Applicants:</b> Application deadlines and wage ranges are required for each job listing, and are 
+                    shown in search results. Other important information such as relocation assistance and if the 
+                    application requires extra documents, other than your resume, is shown at the top of each job 
+                    listing.<br> 
+                    <b>For Employers:</b> BCR also makes it easy for employers to add, update, and delete job listings, 
+                    while also making them easy to view, with our simple job listing form. 
                 </p>
               </div>
               <div class="col-lg">

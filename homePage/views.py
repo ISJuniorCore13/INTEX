@@ -11,7 +11,7 @@ def indexPageView(request):
 
     i = 1
     for j in job_list :
-        if i <= 4 :
+        if i <= 5 :
             featured_list.append(j)
         i += 1
 
