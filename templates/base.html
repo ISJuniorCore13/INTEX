@@ -24,7 +24,7 @@
     <body id="page-top">
       <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" href="http://127.0.0.1:8000/">Black Cyber Recruiter</a>
+            <a class="navbar-brand" href="https://bcr13.herokuapp.com/">Black Cyber Recruiter</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 Menu
                 <i class="fas fa-bars ml-1"></i>
@@ -34,12 +34,12 @@
                     {% if user.is_authenticated %}
                     <li class="nav-item font-weight-bold" style="color:#296F90;padding-right:15px;padding-top:5px;">Hi, {{user.first_name}}</li>
                     {% endif %}
-                    <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:8000/">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:8000/listings/">Search</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://bcr13.herokuapp.com/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://bcr13.herokuapp.com/listings/">Search</a></li>
                     {% if user.is_authenticated %}
-                    <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:8000/accounts/logout/">Log Out</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://bcr13.herokuapp.com/accounts/logout/">Log Out</a></li>
                     {% else %}
-                    <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:8000/accounts/login">Log In</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://bcr13.herokuapp.com/accounts/login">Log In</a></li>
                     {% endif %}
                 </ul>
             </div>

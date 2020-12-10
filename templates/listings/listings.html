@@ -10,7 +10,7 @@
     <br><br>
 
     {% if user.groups.all.0.name == 'employer' %} 
-    <li class="nav-item"><a class="btn btn-primary btn-lg text-uppercase text-center" href="http://127.0.0.1:8000/addjob/">Add Job</a></li>
+    <li class="nav-item"><a class="btn btn-primary btn-lg text-uppercase text-center" href="https://bcr13.herokuapp.com/addjob/">Add Job</a></li>
     {% endif %}
     {% if message == 'feat' %}
     <div class="containter bg-light"> 
@@ -52,7 +52,7 @@
                                             <p>Deadline: {{f.deadline_date}}</p>
                                         </div>
                                         <div class="col-4">
-                                            <a class="btn btn-primary btn-sm" href='http://127.0.0.1:8000/addjob/{{f.id}}'>Edit</a>
+                                            <a class="btn btn-primary btn-sm" href='https://bcr13.herokuapp.com/addjob/{{f.id}}'>Edit</a>
                                         </div>
                                         <div class="col-4">
                                             <form name="joblisting" method="post" action="{% url 'removeListing' %}" >
@@ -122,7 +122,7 @@
                                             <p>Deadline: {{s.deadline_date}}</p>
                                         </div>
                                         <div class="col-4">
-                                            <a  class="btn btn-primary btn-sm" href='http://127.0.0.1:8000/addjob/{{s.id}}'>Edit</a>
+                                            <a  class="btn btn-primary btn-sm" href='https://bcr13.herokuapp.com/addjob/{{s.id}}'>Edit</a>
                                         </div>
                                         <div class="col-4">
                                             <form name="joblisting" method="post" action="{% url 'removeListing' %}" >

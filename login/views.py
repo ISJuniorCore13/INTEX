@@ -71,6 +71,6 @@ def enterPageView(request):
 
     rtrn_object = render(request, 'login/signup.html', context)
     if msg == 'Success':
-        rtrn_object = redirect('http://127.0.0.1:8000/accounts/login/')
+        rtrn_object = redirect('https://bcr13.herokuapp.com/accounts/login/')
     return rtrn_object
         

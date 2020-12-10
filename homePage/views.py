@@ -79,7 +79,7 @@ def submitAddListingPageView(request):
     }
     
 
-    return redirect('http://127.0.0.1:8000/listings/',context)
+    return redirect('https://bcr13.herokuapp.com/listings/',context)
     
 
 def updateListingPageView(request):
@@ -143,7 +143,7 @@ def updateListingPageView(request):
     }
     
 
-    return redirect('http://127.0.0.1:8000/listings/',context)
+    return redirect('https://bcr13.herokuapp.com/listings/',context)
 
 def editListingPageView(request,edit_id):
     job_to_edit = Job_Listing.objects.get(id=int(edit_id))
@@ -158,7 +158,7 @@ def removeListingPageView(request):
     remove_id = request.POST.get('remove_id')
     remove_id = int(remove_id)
     Job_Listing.objects.get(id=remove_id).delete()
-    return redirect('http://127.0.0.1:8000/listings/')
+    return redirect('https://bcr13.herokuapp.com/listings/')
 
 
 def userProfilePageView(request, user_id):

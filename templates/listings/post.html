@@ -27,7 +27,7 @@
         <a class="btn btn-primary btn-lg text-uppercase text-center" 
             href={{job_object.job_link_to_application}} target = "_blank" onclick="displayChoice()">Apply</a>
         {% elif user.groups.all.0.name == 'employer' and job_object.employer.user_id == user.id %}
-            <a class="btn btn-primary btn-lg text-uppercase text-center" href='http://127.0.0.1:8000/addjob/{{job_object.id}}'>Edit</a>
+            <a class="btn btn-primary btn-lg text-uppercase text-center" href='https://bcr13.herokuapp.com/addjob/{{job_object.id}}'>Edit</a>
         {% endif %}
         <br><br>
         <div class="row">

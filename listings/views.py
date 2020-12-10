@@ -172,4 +172,4 @@ def surveySubmitView(request):
     }
     
 
-    return redirect('http://127.0.0.1:8000/listings/', context)
+    return redirect('https://bcr13.herokuapp.com/listings/', context)
