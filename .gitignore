@@ -1,6 +1,8 @@
 
-*/__pycache__/admin.cpython-39.pyc
+*.log
+*.pot
 *.pyc
-*/__pycache__/views.cpython-39.pyc
-*/migrations/0001_initial.py
-*/__pycache__/views.cpython-39.pyc
+__pycache__/
+local_settings.py
+db.sqlite3
+venv/
